@@ -26,7 +26,6 @@
             padding: 0;
         }
 
-        /* --- FONDO MÁGICO FIJO (NO EXTENDIDO) --- */
         body, html {
             width: 100%;
             font-family: 'Montserrat', sans-serif;
@@ -36,17 +35,24 @@
         }
 
         body {
-            /* background-size: contain mantiene el tamaño sin extender ni recortar */
-            background-image: url('assets/f2.jpg');
-            background-size: 100% auto; 
-            background-repeat: no-repeat;
-            background-position: top center;
-            background-attachment: fixed;
-            background-color: #E2E8F0; /* Fondo plata suave si la pantalla es muy alta */
+            background-color: #E2E8F0; /* Color de respaldo mientras carga la imagen */
         }
 
-        @media (min-width: 768px) {
-            body { background-size: contain; background-position: center; }
+        /* --- FONDO FIJO REAL ---
+           La imagen vive en su propia capa "position: fixed".
+           Así NO se mueve al hacer scroll (funciona también en iPhone/Android,
+           donde "background-attachment: fixed" falla) y el contenido se desliza encima. */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100lvh; /* altura estable en móviles aunque se oculte la barra del navegador */
+            background: url('assets/f2.jpg') center top / cover no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            transform: translateZ(0); /* capa propia en GPU, scroll más fluido */
         }
 
         /* --- SISTEMAS DE PARTÍCULAS (CENICIENTA) --- */
@@ -202,7 +208,7 @@
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; text-shadow: 0 0 20px rgba(140,168,209,1); } 100% { opacity: 0.5; } }
         @keyframes floatText { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* --- CONTENIDO PRINCIPAL: GLASSMORPHISM --- */
+        /* --- CONTENIDO PRINCIPAL: GLASSMORPHISM (se desliza sobre el fondo fijo) --- */
         #main-invitation {
             display: none; width: 100%; flex-direction: column; align-items: center;
             opacity: 0; animation: fadeInMain 2s forwards 0.5s;
@@ -303,7 +309,7 @@
         /* --- CUENTA REGRESIVA EN UN SOLO RENGLÓN --- */
         .countdown-container {
             display: flex; 
-            flex-wrap: nowrap; /* FUERZA A UN SOLO RENGLÓN */
+            flex-wrap: nowrap;
             justify-content: space-between; 
             align-items: center;
             gap: 10px; 
@@ -314,8 +320,8 @@
         .cd-box {
             background: rgba(255,255,255,0.6); border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 16px; box-shadow: 0 10px 25px rgba(140,168,209,0.2), inset 0 0 15px rgba(255,255,255,1);
-            flex: 1; /* Todos los cuadros toman el mismo ancho */
-            aspect-ratio: 1; /* Los mantiene cuadrados */
+            flex: 1;
+            aspect-ratio: 1;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             backdrop-filter: blur(8px);
             padding: 5px;
@@ -421,6 +427,9 @@
     </style>
 </head>
 <body>
+
+    <!-- FONDO FIJO: la imagen no se mueve, el contenido se desliza encima -->
+    <div class="fixed-bg" aria-hidden="true"></div>
 
     <!-- AUDIO OCULTO -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
