@@ -360,10 +360,12 @@
         }
 
         /* --- GALERÍA DE FOTOS (se ven completas, sin recortes) --- */
-        .photo-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 12px; width: 100%; margin-top: 35px; position: relative; z-index: 2;
+        .photo-row {
+            display: grid; gap: 12px; width: 100%; max-width: 550px;
+            margin: 0 auto 50px auto; position: relative; z-index: 2;
         }
+        .photo-row.one { grid-template-columns: 1fr; max-width: 420px; }
+        .photo-row.two { grid-template-columns: repeat(2, 1fr); align-items: start; }
         .photo-item {
             background: rgba(255,255,255,0.55);
             border: 2px solid rgba(255,255,255,0.9);
@@ -467,7 +469,7 @@
             .envelope { width: 300px; height: 195px; }
             .envelope::before, .envelope::after { border-left-width: 150px; border-right-width: 150px; border-top-width: 97px; border-bottom-width: 97px; }
             .front-flap { border-left-width: 150px; border-right-width: 150px; border-top-width: 105px; }
-            .photo-grid { gap: 8px; }
+            .photo-row { gap: 8px; }
         }
     </style>
 </head>
@@ -523,12 +525,7 @@
             </p>
         </section>
 
-        <!-- Galería de 10 fotos -->
-        <section class="glass-card anim-element anim-slide-up delay-1">
-            <div class="anim-element anim-zoom delay-1 info-title">Mis Recuerdos</div>
-            <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 40px;">Mi Historia</div>
-            <div class="photo-grid" id="photo-grid"></div>
-        </section>
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="0" role="button" tabindex="0" aria-label="Abrir foto 1"><img src="assets/1.jpg" alt="Foto 1 de Elizabeth" loading="lazy"></div></div>
 
         <!-- Fecha, Hora, Cuenta Regresiva y Calendario -->
         <section class="glass-card anim-element anim-slide-up delay-1">
@@ -562,6 +559,8 @@
             <a id="calendar-link" href="#" target="_blank" rel="noopener" class="anim-element anim-slide-up delay-4 btn-solid">Agendar Evento</a>
         </section>
 
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="1" role="button" tabindex="0" aria-label="Abrir foto 2"><img src="assets/2.jpg" alt="Foto 2 de Elizabeth" loading="lazy"></div></div>
+
         <!-- Familia -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             <div class="anim-element anim-zoom delay-1 info-title">Con el amor de mi madre</div>
@@ -572,6 +571,8 @@
             <div class="anim-element anim-slide-up delay-4 info-title">Y el apoyo incondicional de mi Abuela</div>
             <div class="anim-element anim-slide-up delay-4 info-data">María F. Castro</div>
         </section>
+
+        <div class="photo-row two anim-element anim-slide-up"><div class="photo-item" data-idx="2" role="button" tabindex="0" aria-label="Abrir foto 3"><img src="assets/3.jpg" alt="Foto 3 de Elizabeth" loading="lazy"></div><div class="photo-item" data-idx="3" role="button" tabindex="0" aria-label="Abrir foto 4"><img src="assets/4.jpg" alt="Foto 4 de Elizabeth" loading="lazy"></div></div>
 
         <!-- Ubicación: Recepción -->
         <section class="glass-card anim-element anim-slide-up delay-1">
@@ -592,6 +593,8 @@
             <a href="https://maps.app.goo.gl/Eh6svjHsLop4c2df8" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Ver Ubicación</a>
         </section>
 
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="4" role="button" tabindex="0" aria-label="Abrir foto 5"><img src="assets/5.jpg" alt="Foto 5 de Elizabeth" loading="lazy"></div></div>
+
         <!-- Dress Code -->
         <section class="glass-card anim-element anim-slide-up delay-1" style="background: rgba(15, 23, 42, 0.6); border-color: rgba(255,255,255,0.2);">
             <div class="anim-element anim-zoom delay-1 info-title" style="color: var(--accent-glow);">Dress Code</div>
@@ -603,6 +606,8 @@
                 El color <strong style="color: var(--accent-glow); text-shadow: 0 0 10px var(--accent-glow);">azul</strong>, en todas sus tonalidades, está reservado exclusivamente para la quinceañera. Agradecemos elegir otro color para tu atuendo.
             </p>
         </section>
+
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="5" role="button" tabindex="0" aria-label="Abrir foto 6"><img src="assets/6.jpg" alt="Foto 6 de Elizabeth" loading="lazy"></div></div>
 
         <!-- Mesa de Regalos -->
         <section class="glass-card anim-element anim-slide-up delay-1">
@@ -628,6 +633,8 @@
             </div>
         </section>
 
+        <div class="photo-row two anim-element anim-slide-up"><div class="photo-item" data-idx="6" role="button" tabindex="0" aria-label="Abrir foto 7"><img src="assets/7.jpg" alt="Foto 7 de Elizabeth" loading="lazy"></div><div class="photo-item" data-idx="7" role="button" tabindex="0" aria-label="Abrir foto 8"><img src="assets/8.jpg" alt="Foto 8 de Elizabeth" loading="lazy"></div></div>
+
         <!-- Playlist -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             <div class="anim-element anim-zoom delay-1 info-title">Música</div>
@@ -643,6 +650,8 @@
             <a href="https://open.spotify.com/playlist/1UbTH5RDQepxwRKVvk6Lyt?si=1afdb6bbf7fa47ef&pt=e5c38c3716a095fd295aed757e83afc4" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Agregar Canciones</a>
         </section>
 
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="8" role="button" tabindex="0" aria-label="Abrir foto 9"><img src="assets/9.jpg" alt="Foto 9 de Elizabeth" loading="lazy"></div></div>
+
         <!-- Galería en vivo -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             <div class="anim-element anim-zoom delay-1 info-title">Momentos</div>
@@ -655,6 +664,8 @@
             </p>
             <a href="https://drive.google.com/drive/folders/1hAJwJ5CUZYAWoYtudkg8e_dF6QgGGPXI?usp=sharing" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Subir mis Fotos</a>
         </section>
+
+        <div class="photo-row one anim-element anim-slide-up"><div class="photo-item" data-idx="9" role="button" tabindex="0" aria-label="Abrir foto 10"><img src="assets/10.jpg" alt="Foto 10 de Elizabeth" loading="lazy"></div></div>
 
         <!-- RSVP y Pases -->
         <section class="glass-card anim-element anim-slide-up delay-1">
@@ -796,31 +807,17 @@
             }, 1000);
         }
 
-        // --- GALERÍA DE FOTOS: assets/1.jpg ... assets/10.jpg ---
+        // --- FOTOS REPARTIDAS: assets/1.jpg ... assets/10.jpg ---
         const TOTAL_PHOTOS = 10;
         const photos = [];
         for (let i = 1; i <= TOTAL_PHOTOS; i++) photos.push(`assets/${i}.jpg`);
         let currentPhoto = 0;
 
-        (function buildGallery() {
-            const grid = document.getElementById('photo-grid');
-            photos.forEach((src, idx) => {
-                const item = document.createElement('div');
-                item.className = 'photo-item anim-element anim-zoom';
-                item.style.transitionDelay = ((idx % 2) * 0.15) + 's';
-                item.setAttribute('role', 'button');
-                item.setAttribute('tabindex', '0');
-                item.setAttribute('aria-label', 'Abrir foto ' + (idx + 1));
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = 'Foto ' + (idx + 1) + ' de Elizabeth';
-                img.loading = 'lazy';
-                item.appendChild(img);
-                item.addEventListener('click', () => openLightbox(idx));
-                item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); } });
-                grid.appendChild(item);
-            });
-        })();
+        document.querySelectorAll('.photo-item').forEach(item => {
+            const idx = parseInt(item.dataset.idx, 10);
+            item.addEventListener('click', () => openLightbox(idx));
+            item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); } });
+        });
 
         const lightbox = document.getElementById('lightbox');
         const lbImg = document.getElementById('lightbox-img');
