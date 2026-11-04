@@ -13,7 +13,7 @@
             --accent-silver: #B0BACC; 
             --text-dark: #1E293B;      
             --text-muted: #334155;
-            --glass-bg: rgba(255, 255, 255, 0.25); /* Cristal más transparente */
+            --glass-bg: rgba(255, 255, 255, 0.25);
             --glass-border: rgba(255, 255, 255, 0.6);
             
             --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
@@ -35,28 +35,24 @@
         }
 
         body {
-            background-color: #E2E8F0; /* Color de respaldo mientras carga la imagen */
+            background-color: #E2E8F0;
         }
 
-        /* --- FONDO FIJO REAL ---
-           La imagen vive en su propia capa "position: fixed".
-           Así NO se mueve al hacer scroll (funciona también en iPhone/Android,
-           donde "background-attachment: fixed" falla) y el contenido se desliza encima. */
+        /* --- FONDO FIJO REAL --- */
         .fixed-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            height: 100lvh; /* altura estable en móviles aunque se oculte la barra del navegador */
+            height: 100lvh;
             background: url('assets/f2.jpg') center top / cover no-repeat;
             z-index: 0;
             pointer-events: none;
-            transform: translateZ(0); /* capa propia en GPU, scroll más fluido */
+            transform: translateZ(0);
         }
 
         /* --- SISTEMAS DE PARTÍCULAS (CENICIENTA) --- */
-        /* 1. Destellos Parpadeantes */
         .magic-sparkle {
             position: fixed;
             background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(168,192,229,0.8) 40%, rgba(255,255,255,0) 80%);
@@ -73,7 +69,6 @@
             50% { opacity: 1; transform: scale(1.5) rotate(90deg); }
         }
 
-        /* 2. Polvo de Hadas Cayendo */
         .fairy-dust {
             position: fixed;
             top: -10px;
@@ -128,7 +123,7 @@
 
         .sticky-music-btn svg { width: 20px; height: 20px; fill: #fff; }
 
-        /* --- SOBRE EDITORIAL (FONDO.JPG) --- */
+        /* --- SOBRE EDITORIAL --- */
         #envelope-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('assets/fondo.jpg') center/cover no-repeat;
@@ -208,7 +203,7 @@
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; text-shadow: 0 0 20px rgba(140,168,209,1); } 100% { opacity: 0.5; } }
         @keyframes floatText { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* --- CONTENIDO PRINCIPAL: GLASSMORPHISM (se desliza sobre el fondo fijo) --- */
+        /* --- CONTENIDO PRINCIPAL --- */
         #main-invitation {
             display: none; width: 100%; flex-direction: column; align-items: center;
             opacity: 0; animation: fadeInMain 2s forwards 0.5s;
@@ -218,7 +213,6 @@
 
         @keyframes fadeInMain { to { opacity: 1; } }
 
-        /* MEJORES ANIMACIONES 3D Y ENTRADAS */
         .anim-element { opacity: 0; transition: all 1.2s var(--transition-bounce); position: relative; z-index: 2; }
         
         .anim-slide-up { transform: translateY(80px) scale(0.95); }
@@ -232,7 +226,6 @@
         .delay-3 { transition-delay: 0.5s; }
         .delay-4 { transition-delay: 0.7s; }
 
-        /* TARJETAS DE CRISTAL (GLASSMORPHISM) */
         .glass-card {
             width: 100%; max-width: 550px; 
             margin: 0 auto 50px auto; 
@@ -250,13 +243,11 @@
             animation: floatCard 6s ease-in-out infinite;
         }
 
-        /* Efecto de levitación continua para las tarjetas */
         @keyframes floatCard {
             0%, 100% { transform: translateY(0px); box-shadow: 0 25px 45px rgba(0,0,0,0.15), inset 0 0 30px rgba(255,255,255,0.4); }
             50% { transform: translateY(-10px); box-shadow: 0 35px 55px rgba(0,0,0,0.2), inset 0 0 40px rgba(255,255,255,0.6); }
         }
 
-        /* Tipografía con Resplandores */
         .tag-line {
             font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: 6px;
             text-transform: uppercase; color: #1e3a8a; margin-bottom: 25px; font-weight: 700;
@@ -290,7 +281,6 @@
             text-shadow: 0 0 20px rgba(255,255,255,1);
         }
 
-        /* Botones Mágicos */
         .btn-solid {
             display: inline-block; background: linear-gradient(45deg, var(--accent-main), #6b8cbd); color: #fff;
             padding: 18px 40px; font-family: 'Montserrat', sans-serif; font-size: 13px;
@@ -329,7 +319,13 @@
         .cd-box span { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 6vw, 36px); font-weight: 700; color: #1e3a8a; line-height: 1; text-shadow: 0 0 15px rgba(255,255,255,1); }
         .cd-box small { font-family: 'Montserrat', sans-serif; font-size: clamp(9px, 2.5vw, 12px); text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); margin-top: 5px; font-weight: 700; }
 
-        /* Widget de Calendario Cristalino */
+        /* Hora del evento (arriba de la cuenta regresiva) */
+        .event-time {
+            font-family: 'Cinzel', serif; font-size: 22px; letter-spacing: 5px;
+            color: #1e3a8a; font-weight: 700; margin-top: 25px;
+            text-shadow: 0 0 20px rgba(255,255,255,1);
+        }
+
         .calendar-wrapper {
             width: 100%; max-width: 380px; margin: 40px auto 10px auto; padding: 35px 25px;
             background: rgba(255,255,255,0.5); border-radius: 20px; 
@@ -363,7 +359,58 @@
             transform: scale(1.15); border: 2px solid #fff;
         }
 
-        /* Mapas */
+        /* --- GALERÍA DE FOTOS (se ven completas, sin recortes) --- */
+        .photo-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 12px; width: 100%; margin-top: 35px; position: relative; z-index: 2;
+        }
+        .photo-item {
+            background: rgba(255,255,255,0.55);
+            border: 2px solid rgba(255,255,255,0.9);
+            border-radius: 14px; padding: 5px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15), inset 0 0 12px rgba(255,255,255,0.8);
+            cursor: zoom-in; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.4s var(--transition-bounce), box-shadow 0.4s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .photo-item:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 35px rgba(140,168,209,0.6); }
+        .photo-item img {
+            display: block; width: 100%; height: auto; /* altura automática = foto completa */
+            border-radius: 10px;
+        }
+
+        /* Visor de fotos (lightbox) */
+        #lightbox {
+            position: fixed; inset: 0; background: rgba(15,23,42,0.94);
+            z-index: 5000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        #lightbox.show { display: flex; }
+        #lightbox.visible { opacity: 1; }
+        #lightbox img {
+            max-width: 92vw; max-height: 86vh; width: auto; height: auto;
+            object-fit: contain; border-radius: 8px;
+            box-shadow: 0 0 40px rgba(140,168,209,0.5);
+            user-select: none; -webkit-user-drag: none;
+        }
+        .lb-btn {
+            position: absolute; background: rgba(255,255,255,0.18); color: #fff;
+            border: 1px solid rgba(255,255,255,0.5); border-radius: 50%;
+            width: 48px; height: 48px; font-size: 24px; line-height: 1;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(6px); outline: none;
+        }
+        .lb-btn:hover { background: rgba(140,168,209,0.7); }
+        .lb-close { top: 18px; right: 18px; }
+        .lb-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+        .lb-next { right: 14px; top: 50%; transform: translateY(-50%); }
+        .lb-counter {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            color: #fff; font-family: 'Montserrat', sans-serif; font-size: 13px;
+            letter-spacing: 3px; font-weight: 600;
+        }
+
         .map-box {
             width: 100%; max-width: 550px; height: 320px; margin: 30px auto;
             overflow: hidden; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; z-index: 2;
@@ -371,7 +418,6 @@
         }
         .map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(10%) contrast(1.1) hue-rotate(190deg); }
 
-        /* Formularios Cristalinos */
         .form-group { width: 100%; margin: 0 auto 20px auto; position: relative; z-index: 2; }
         
         .input-line {
@@ -388,7 +434,6 @@
         textarea.input-line { resize: vertical; min-height: 100px; }
         select.input-line { appearance: none; text-align-last: center; cursor: pointer; }
 
-        /* Pase VIP Invytia */
         .ticket-card {
             width: 100%; margin: 30px auto; background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(234, 242, 250, 0.9));
             padding: 50px 25px; position: relative; text-align: center;
@@ -405,7 +450,6 @@
         .ticket-card::before { left: -20px; }
         .ticket-card::after { right: -20px; }
 
-        /* Contenedor Mesa de Regalos */
         .card-container {
             margin-top: 40px; font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-dark); 
             border: 1px solid rgba(255,255,255,0.9); padding: 40px 30px; border-radius: 20px; 
@@ -423,22 +467,29 @@
             .envelope { width: 300px; height: 195px; }
             .envelope::before, .envelope::after { border-left-width: 150px; border-right-width: 150px; border-top-width: 97px; border-bottom-width: 97px; }
             .front-flap { border-left-width: 150px; border-right-width: 150px; border-top-width: 105px; }
+            .photo-grid { gap: 8px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FONDO FIJO: la imagen no se mueve, el contenido se desliza encima -->
     <div class="fixed-bg" aria-hidden="true"></div>
 
-    <!-- AUDIO OCULTO -->
     <audio id="bg-music" src="assets/song.mp3" loop></audio>
 
-    <!-- BOTÓN STICKY DE MÚSICA -->
     <button id="music-btn" class="sticky-music-btn" onclick="toggleMusic()" aria-label="Controlar música">
         <svg id="music-icon-play" style="display:none;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         <svg id="music-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
+
+    <!-- VISOR DE FOTOS -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+        <button class="lb-btn lb-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
+        <button class="lb-btn lb-prev" onclick="changePhoto(-1)" aria-label="Anterior">&#8249;</button>
+        <img id="lightbox-img" src="" alt="Foto de Elizabeth">
+        <button class="lb-btn lb-next" onclick="changePhoto(1)" aria-label="Siguiente">&#8250;</button>
+        <div class="lb-counter" id="lb-counter"></div>
+    </div>
 
     <!-- PANTALLA INICIAL DEL SOBRE -->
     <div id="envelope-screen">
@@ -458,7 +509,6 @@
         <div class="hint-text" style="position: relative; z-index: 10;">Toca para descubrir la magia</div>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL: TARJETAS DE CRISTAL (GLASSMORPHISM) -->
     <main id="main-invitation">
         
         <!-- Portada -->
@@ -473,13 +523,22 @@
             </p>
         </section>
 
-        <!-- Fecha, Cuenta Regresiva y Calendario -->
+        <!-- Galería de 10 fotos -->
+        <section class="glass-card anim-element anim-slide-up delay-1">
+            <div class="anim-element anim-zoom delay-1 info-title">Mis Recuerdos</div>
+            <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 40px;">Mi Historia</div>
+            <div class="photo-grid" id="photo-grid"></div>
+        </section>
+
+        <!-- Fecha, Hora, Cuenta Regresiva y Calendario -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             <div class="anim-element anim-zoom delay-1 info-title">Será un honor contar con tu presencia el</div>
             <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 46px; text-shadow: 0 0 25px rgba(255,255,255,1), 0 0 10px rgba(140,168,209,0.8);">19 de Diciembre</div>
             <div class="anim-element anim-slide-up delay-3 info-data" style="font-size: 28px; color: #1e3a8a; letter-spacing: 6px;">2026</div>
 
-            <!-- Cuenta Regresiva (Forzada en 1 renglón) -->
+            <!-- HORA DEL EVENTO -->
+            <div class="anim-element anim-slide-up delay-3 event-time">9:00 P.M.</div>
+
             <div class="anim-element anim-zoom delay-4 countdown-container">
                 <div class="cd-box"><span id="cd-days">00</span><small>Días</small></div>
                 <div class="cd-box"><span id="cd-hours">00</span><small>Hrs</small></div>
@@ -487,7 +546,6 @@
                 <div class="cd-box"><span id="cd-secs">00</span><small>Seg</small></div>
             </div>
 
-            <!-- Calendario Diciembre 2026 -->
             <div class="anim-element anim-slide-up delay-4 calendar-wrapper">
                 <div class="calendar-month">Diciembre</div>
                 <div class="calendar-grid">
@@ -500,7 +558,8 @@
                 </div>
             </div>
 
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Elizabeth&dates=20261220T030000Z/20261220T090000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial+en+el+Palacio+Le+Crillon" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Agendar Evento</a>
+            <!-- El enlace se arma en el script (ver buildCalendarLink) -->
+            <a id="calendar-link" href="#" target="_blank" rel="noopener" class="anim-element anim-slide-up delay-4 btn-solid">Agendar Evento</a>
         </section>
 
         <!-- Familia -->
@@ -584,7 +643,7 @@
             <a href="https://open.spotify.com/playlist/1UbTH5RDQepxwRKVvk6Lyt?si=1afdb6bbf7fa47ef&pt=e5c38c3716a095fd295aed757e83afc4" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Agregar Canciones</a>
         </section>
 
-        <!-- Galería -->
+        <!-- Galería en vivo -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             <div class="anim-element anim-zoom delay-1 info-title">Momentos</div>
             <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 40px;">Galería en Vivo</div>
@@ -597,10 +656,9 @@
             <a href="https://drive.google.com/drive/folders/1hAJwJ5CUZYAWoYtudkg8e_dF6QgGGPXI?usp=sharing" target="_blank" class="anim-element anim-slide-up delay-4 btn-solid">Subir mis Fotos</a>
         </section>
 
-        <!-- RSVP y Pases (SISTEMA INVYTIA) -->
+        <!-- RSVP y Pases -->
         <section class="glass-card anim-element anim-slide-up delay-1">
             
-            <!-- Tarjeta VIP Oculta -->
             <div id="pases-section" style="display: none; width: 100%;">
                 <div class="anim-element anim-zoom delay-1 info-title">Acceso Mágico</div>
                 <div class="anim-element anim-zoom delay-2 ticket-card">
@@ -621,7 +679,6 @@
                 <div class="anim-element anim-slide-up line-horizontal" style="margin: 60px auto;"></div>
             </div>
 
-            <!-- Formulario RSVP -->
             <div class="anim-element anim-zoom delay-1 info-title">RSVP</div>
             <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 40px;">Confirmar Asistencia</div>
             <p class="anim-element anim-slide-up delay-3 body-serif" style="margin: 15px auto 35px auto; font-size: 24px;">
@@ -649,7 +706,6 @@
 
             <div class="anim-element anim-zoom line-divider"></div>
 
-            <!-- Muro de Deseos -->
             <div class="anim-element anim-zoom delay-1 info-title">Mensajes</div>
             <div class="anim-element anim-zoom delay-2 info-data" style="font-size: 40px;">Muro de los Deseos</div>
             <div class="anim-element anim-slide-up delay-3 form-group" style="margin-top: 35px;">
@@ -668,7 +724,6 @@
         // --- GENERADOR DE DESTELLOS MÁGICOS Y POLVO DE HADAS ---
         function createMagic() {
             const container = document.body;
-            // Destellos parpadeantes
             const sparkleCount = window.innerWidth < 600 ? 40 : 80; 
             for(let i = 0; i < sparkleCount; i++) {
                 let sparkle = document.createElement('div');
@@ -683,7 +738,6 @@
                 container.appendChild(sparkle);
             }
 
-            // Polvo de hadas cayendo (Estrellas fugaces)
             const dustCount = window.innerWidth < 600 ? 15 : 30;
             for(let j = 0; j < dustCount; j++) {
                 let dust = document.createElement('div');
@@ -742,7 +796,88 @@
             }, 1000);
         }
 
-        // --- INTERSECTION OBSERVER (Animaciones Avanzadas) ---
+        // --- GALERÍA DE FOTOS: assets/1.jpg ... assets/10.jpg ---
+        const TOTAL_PHOTOS = 10;
+        const photos = [];
+        for (let i = 1; i <= TOTAL_PHOTOS; i++) photos.push(`assets/${i}.jpg`);
+        let currentPhoto = 0;
+
+        (function buildGallery() {
+            const grid = document.getElementById('photo-grid');
+            photos.forEach((src, idx) => {
+                const item = document.createElement('div');
+                item.className = 'photo-item anim-element anim-zoom';
+                item.style.transitionDelay = ((idx % 2) * 0.15) + 's';
+                item.setAttribute('role', 'button');
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('aria-label', 'Abrir foto ' + (idx + 1));
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Foto ' + (idx + 1) + ' de Elizabeth';
+                img.loading = 'lazy';
+                item.appendChild(img);
+                item.addEventListener('click', () => openLightbox(idx));
+                item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); } });
+                grid.appendChild(item);
+            });
+        })();
+
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCounter = document.getElementById('lb-counter');
+
+        function showPhoto() {
+            lbImg.src = photos[currentPhoto];
+            lbCounter.textContent = (currentPhoto + 1) + ' / ' + photos.length;
+        }
+        function openLightbox(idx) {
+            currentPhoto = idx;
+            showPhoto();
+            lightbox.classList.add('show');
+            requestAnimationFrame(() => lightbox.classList.add('visible'));
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('visible');
+            setTimeout(() => lightbox.classList.remove('show'), 300);
+            document.body.style.overflow = '';
+        }
+        function changePhoto(step) {
+            currentPhoto = (currentPhoto + step + photos.length) % photos.length;
+            showPhoto();
+        }
+
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('show')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changePhoto(-1);
+            if (e.key === 'ArrowRight') changePhoto(1);
+        });
+        // Deslizar con el dedo en celular
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+        lightbox.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) changePhoto(dx < 0 ? 1 : -1);
+        }, { passive: true });
+
+        // --- ENLACE "AGENDAR EVENTO" (Google Calendar) ---
+        (function buildCalendarLink() {
+            const title = 'XV Años de Elizabeth';
+            const details = 'CELEBREMOS JUNTOS ESTE DÍA TAN ESPECIAL EN EL "PALACIO LE CRILLON", LOS XV AÑOS DE ELIZABETH: 19 DE DICIEMBRE, 9:00 P.M. - AGRADECEMOS TU PUNTUAL ASISTENCIA';
+            const location = 'Palacio Le Crillon, Av. Cuauhtémoc 1438, Sta Cruz Atoyac, Benito Juárez, 03310 Ciudad de México, CDMX';
+            // 9:00 PM hora CDMX (UTC-6) = 03:00 UTC del 20 de diciembre
+            const dates = '20261220T030000Z/20261220T090000Z';
+            const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+                + '&text=' + encodeURIComponent(title)
+                + '&dates=' + dates
+                + '&details=' + encodeURIComponent(details)
+                + '&location=' + encodeURIComponent(location);
+            document.getElementById('calendar-link').href = url;
+        })();
+
+        // --- INTERSECTION OBSERVER ---
         document.addEventListener("DOMContentLoaded", () => {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
             const observer = new IntersectionObserver((entries, observer) => {
